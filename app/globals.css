@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-geist-sans), sans-serif;
+  background-color: lab(2.75381% 0 0);
+  color:lab(98.26% 0 0)
+}
+
+/* Your existing global CSS here */
+
+@theme {
+  /* The @theme directive is used to register custom design tokens 
+    that can be accessed as utilities in your components.
+  */
+  
+  --background-image: {
+    /* Define the grid pattern as a custom background-image utility */
+    --grid-pattern: 
+      linear-gradient(to right, rgba(128,128,128,0.2) 1px, transparent 1px), 
+      linear-gradient(to bottom, rgba(128,128,128,0.2) 1px, transparent 1px);
+  };
+
+  --background-size: {
+    /* Define the background size utility */
+    --40x40: 39.5px 39.5px;
+  };
+}
+
+/* You must also ensure these utilities are available to the components */
+@layer utilities {
+  .bg-grid-pattern {
+    background-image: var(--bg-grid-pattern);
+  }
+  .bg-40x40 {
+    background-size: var(--bg-40x40);
+  }
+}
